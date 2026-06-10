@@ -191,3 +191,21 @@
     wrap.classList.remove('open');
   });
 })();
+
+/* ---- project film facades (lazy YouTube) ---- */
+(function(){
+  document.querySelectorAll('.film[data-yt]').forEach(function(f){
+    f.addEventListener('click', function(){
+      if (f.classList.contains('on')) return;
+      var id=f.getAttribute('data-yt');
+      var h=f.querySelector('h3');
+      var ifr=document.createElement('iframe');
+      ifr.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1';
+      ifr.title=h?h.textContent:'Jewel Isaac project film';
+      ifr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      ifr.setAttribute('allowfullscreen','');
+      f.classList.add('on');
+      f.appendChild(ifr);
+    });
+  });
+})();
