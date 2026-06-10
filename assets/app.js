@@ -138,3 +138,56 @@
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 })();
+
+/* ============================================================
+   Language switcher (custom UI over Google Translate)
+   Covers the languages of the Alaska LNG project partners.
+   ============================================================ */
+(function () {
+  'use strict';
+  var SHORT = { en:'EN', ja:'JA', ko:'KO', 'zh-TW':'TW', 'zh-CN':'CN', th:'TH', fr:'FR', el:'EL' };
+  var wrap = document.getElementById('lang');
+  if (!wrap) return;
+  var btn = document.getElementById('langBtn'),
+      menu = document.getElementById('langMenu'),
+      cur = document.getElementById('langCur');
+
+  function cookieLang() {
+    var m = document.cookie.match(/googtrans=\/[A-Za-z-]+\/([A-Za-z-]+)/);
+    return (m && SHORT[m[1]]) ? m[1] : 'en';
+  }
+  function mark(code) {
+    if (cur) cur.textContent = SHORT[code] || 'EN';
+    if (menu) menu.querySelectorAll('button').forEach(function (b) {
+      b.classList.toggle('on', b.getAttribute('data-lang') === code);
+    });
+  }
+  function clearCookie() {
+    var exp = ';expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+    document.cookie = 'googtrans=' + exp;
+    try { document.cookie = 'googtrans=' + exp + ';domain=.' + location.hostname; } catch (e) {}
+  }
+  function setCookie(v) {
+    document.cookie = 'googtrans=' + v + ';path=/';
+    try { document.cookie = 'googtrans=' + v + ';path=/;domain=.' + location.hostname; } catch (e) {}
+  }
+  function setLang(code) {
+    mark(code);
+    if (code === 'en') { clearCookie(); location.reload(); return; }
+    setCookie('/en/' + code);
+    var combo = document.querySelector('.goog-te-combo');
+    if (combo) { combo.value = code; combo.dispatchEvent(new Event('change')); }
+    else { location.reload(); }
+  }
+
+  mark(cookieLang());
+  btn.addEventListener('click', function (e) { e.stopPropagation(); wrap.classList.toggle('open'); });
+  document.addEventListener('click', function () { wrap.classList.remove('open'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') wrap.classList.remove('open'); });
+  menu.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var b = e.target.closest('button'); if (!b) return;
+    setLang(b.getAttribute('data-lang'));
+    wrap.classList.remove('open');
+  });
+})();

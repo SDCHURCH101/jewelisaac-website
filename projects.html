@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=2">
+<link rel="stylesheet" href="assets/styles.css?v=4">
 </head>
 <body data-page="projects">
 
@@ -43,6 +43,23 @@
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
+      <div class="lang notranslate" id="lang" translate="no">
+        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-label="Select language">
+          <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg>
+          <span id="langCur">EN</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en"><span class="ln-native">English</span><span class="ln-en">English</span></button>
+          <button data-lang="ja"><span class="ln-native">日本語</span><span class="ln-en">Japanese</span></button>
+          <button data-lang="ko"><span class="ln-native">한국어</span><span class="ln-en">Korean</span></button>
+          <button data-lang="zh-TW"><span class="ln-native">中文（繁體）</span><span class="ln-en">Chinese · Taiwan</span></button>
+          <button data-lang="zh-CN"><span class="ln-native">中文（简体）</span><span class="ln-en">Chinese · China</span></button>
+          <button data-lang="th"><span class="ln-native">ไทย</span><span class="ln-en">Thai</span></button>
+          <button data-lang="fr"><span class="ln-native">Français</span><span class="ln-en">French</span></button>
+          <button data-lang="el"><span class="ln-native">Ελληνικά</span><span class="ln-en">Greek</span></button>
+        </div>
+      </div>
       <a href="tel:9074151600" class="btn btn-ghost">907.415.1600</a>
       <a href="contact.html" class="btn btn-amber">Request a Bid <span class="arr">→</span></a>
       <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -115,7 +132,7 @@
         <div class="img" data-bg="assets/img/office-interior.jpg"></div><div class="veil"></div>
         <div class="body"><span class="ptag">Government &amp; Defense</span><h3>Federal Facility Renovations</h3>
           <div class="loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Fairbanks Region, AK</div>
-          <p class="desc">Secure interior renovations and systems upgrades delivered under federal compliance, with DoD facility experience.</p></div>
+          <p class="desc">Secure interior renovations and systems upgrades delivered under federal compliance, with DoW facility experience.</p></div>
       </article>
 
       <article class="card reveal d1" data-market="commercial">
@@ -247,6 +264,9 @@
   </div>
 </footer>
 
-<script src="assets/app.js?v=2"></script>
+<div id="google_translate_element" aria-hidden="true"></div>
+<script>function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:"en",includedLanguages:"en,ja,ko,zh-CN,zh-TW,th,fr,el",autoDisplay:false},"google_translate_element");}</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="assets/app.js?v=3"></script>
 </body>
 </html>
