@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jewelisaac.com/sitemap.xml
+Sitemap: https://www.jewelisaac.com/sitemap.xml
