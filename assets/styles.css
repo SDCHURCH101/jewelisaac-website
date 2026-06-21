@@ -6,7 +6,7 @@
   --steel:#23272f; --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.16);
   --concrete:#8a9099; --fog:#c6ccd3; --paper:#f4f5f6; --paper-2:#e9ebed;
   --amber:#4f9fd6; --amber-2:#2f6fb0; --amber-deep:#12283f; /* brand blue (formerly gold) */
-  --gold:#ffb200; --gold-2:#ff8a00; --brand-navy:#15314e;
+  --gold:#2f6fb0; --gold-2:#4f9fd6; --brand-navy:#15314e;
   --r:4px; --wrap:1240px; --ease:cubic-bezier(.16,.84,.44,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -25,8 +25,8 @@ h1,h2,h3,h4{font-family:'Oswald',sans-serif;font-weight:600;line-height:1.04;let
 .btn{display:inline-flex;align-items:center;gap:11px;font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:14px;padding:16px 28px;border-radius:var(--r);cursor:pointer;border:1px solid transparent;transition:.25s var(--ease);white-space:nowrap}
 .btn .arr{transition:transform .25s var(--ease)}
 .btn:hover .arr{transform:translateX(5px)}
-.btn-amber{background:var(--gold);color:#1a1300}
-.btn-amber:hover{background:#ffc23d;box-shadow:0 12px 30px -10px rgba(255,178,0,.55)}
+.btn-amber{background:var(--amber-2);color:#fff}
+.btn-amber:hover{background:#3f8ed4;box-shadow:0 12px 30px -10px rgba(47,111,176,.55)}
 .btn-ghost{background:transparent;color:var(--paper);border-color:var(--line-2)}
 .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
 .btn-dark{background:#15171b;color:#fff;border-color:rgba(255,255,255,.14)}
@@ -160,7 +160,7 @@ header.shrink .brand .wordmark{height:17px}
 .mobile a{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:30px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--fog)}
 .mobile a:active{color:var(--amber)}
 .mobile .btn{margin-top:30px;justify-content:center;border-bottom:0}
-.mobile a.btn.btn-amber{color:#1a1300}
+.mobile a.btn.btn-amber{color:#fff}
 
 /* Hero (home) */
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:#000 linear-gradient(120deg,#0c0d0f 0%,#16181d 55%,#0c0d0f 100%)}
@@ -539,3 +539,5 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:74px 0 0}
 .util .left a{transition:color .2s var(--ease)}
 .util .left a:hover{color:var(--amber)}
 .util .left .locs{display:inline}
+
+.util .left .locs a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;text-decoration-color:rgba(255,255,255,.45)}
