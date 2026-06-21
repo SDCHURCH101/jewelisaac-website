@@ -141,7 +141,7 @@ font.goog-text-highlight{background:none!important;box-shadow:none!important;col
 .brand .wordmark{height:18px;width:auto;display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
 header.shrink .brand .wordmark{height:17px}
 .brand .word small{display:block;font-size:9px;letter-spacing:.34em;color:var(--concrete);font-weight:400;margin-top:6px}
-.nav-links{display:flex;align-items:center;gap:21px}
+.nav-links{display:flex;align-items:center;gap:15px}
 .nav-links a{font-family:'Oswald',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:13.5px;color:var(--fog);position:relative;padding:6px 0;transition:color .2s}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--amber);transition:width .25s var(--ease)}
 .nav-links a:hover{color:#fff}
@@ -415,7 +415,7 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:74px 0 0}
 .foot-bottom .ids{display:flex;gap:18px;flex-wrap:wrap;font-size:11.5px;color:#5b626b;font-family:'Oswald',sans-serif;letter-spacing:.08em}
 
 /* Responsive */
-@media(max-width:1200px){
+@media(max-width:1240px){
   .nav-links{display:none}
   .burger{display:flex}
   .nav-cta .btn{display:none}
