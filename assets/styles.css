@@ -522,3 +522,15 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:74px 0 0}
 .creds .gfcc-badge img{height:46px}
 @media(max-width:1080px){ .feat-grid{grid-template-columns:1fr;gap:36px} .feat-media{min-height:320px} }
 @media(max-width:560px){ .feat-specs{grid-template-columns:1fr} }
+
+/* ---- Careers ---- */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.benefit{border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;background:var(--ink-2);transition:border-color .3s var(--ease),transform .3s var(--ease)}
+.benefit:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.benefit svg{width:26px;height:26px;color:var(--amber);stroke-width:1.8;margin-bottom:14px}
+.benefit h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:15px;margin:0 0 7px;color:var(--paper)}
+.benefit p{color:var(--concrete);font-size:13.5px;line-height:1.55;margin:0}
+.eeo{border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:var(--r);padding:20px 22px;margin-top:18px;color:var(--fog);font-size:13px;line-height:1.65;background:var(--ink-2)}
+.eeo b{color:var(--paper)}
+@media(max-width:900px){ .benefits{grid-template-columns:1fr 1fr} }
+@media(max-width:560px){ .benefits{grid-template-columns:1fr} }
