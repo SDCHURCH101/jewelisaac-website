@@ -162,14 +162,24 @@
       b.classList.toggle('on', b.getAttribute('data-lang') === code);
     });
   }
+  /* all domain scopes Google Translate may store googtrans on:
+     host-only, the host, .host, and the registrable domain + .registrable
+     (e.g. jewelisaac.com / .jewelisaac.com) so reverting to English works. */
+  function ggDomains() {
+    var host = location.hostname, list = ['', host, '.' + host], p = host.split('.');
+    if (p.length > 2) { var root = p.slice(-2).join('.'); list.push(root, '.' + root); }
+    return list;
+  }
   function clearCookie() {
     var exp = ';expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
-    document.cookie = 'googtrans=' + exp;
-    try { document.cookie = 'googtrans=' + exp + ';domain=.' + location.hostname; } catch (e) {}
+    ggDomains().forEach(function (d) {
+      try { document.cookie = 'googtrans=' + exp + (d ? ';domain=' + d : ''); } catch (e) {}
+    });
   }
   function setCookie(v) {
-    document.cookie = 'googtrans=' + v + ';path=/';
-    try { document.cookie = 'googtrans=' + v + ';path=/;domain=.' + location.hostname; } catch (e) {}
+    ggDomains().forEach(function (d) {
+      try { document.cookie = 'googtrans=' + v + ';path=/' + (d ? ';domain=' + d : ''); } catch (e) {}
+    });
   }
   function setLang(code) {
     mark(code);
