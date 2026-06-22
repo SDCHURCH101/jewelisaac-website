@@ -549,3 +549,11 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:74px 0 0}
 .util .left .locs{display:inline}
 
 .util .left .locs a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;text-decoration-color:rgba(255,255,255,.45)}
+
+/* ---- Alliance + chamber member badges ---- */
+.creds-badges{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.alliance-badge{background:#fff;border-radius:var(--r);padding:8px 15px;display:inline-flex;align-items:center;gap:12px}
+.alliance-badge img{height:34px;width:auto;display:block}
+.alliance-badge .al-txt{display:flex;flex-direction:column;line-height:1.05}
+.alliance-badge .al-txt b{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.03em;font-size:14.5px;color:#1b4a6b}
+.alliance-badge .al-txt small{font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:#5a6470;margin-top:3px}
