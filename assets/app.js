@@ -145,7 +145,7 @@
    ============================================================ */
 (function () {
   'use strict';
-  var SHORT = { en:'EN', ja:'JA', ko:'KO', 'zh-TW':'TW', 'zh-CN':'CN', th:'TH', fr:'FR', el:'EL' };
+  var SHORT = { en:'EN', ja:'JA', ko:'KO', 'zh-TW':'TW', 'zh-CN':'CN', th:'TH', fr:'FR', el:'EL', ru:'RU' };
   var wrap = document.getElementById('lang');
   if (!wrap) return;
   var btn = document.getElementById('langBtn'),
