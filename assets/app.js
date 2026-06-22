@@ -68,7 +68,7 @@
       countObs.unobserve(el);
     });
   }, { threshold: 0.6 });
-  document.querySelectorAll('.cnt').forEach(function (el) { countObs.observe(el); });
+  document.querySelectorAll('.cnt').forEach(function (el) { el.textContent = el.dataset.dec ? (0).toFixed(+el.dataset.dec) : '0'; countObs.observe(el); });
 
   /* ---- project filter ---- */
   var filter = document.querySelector('.filter');
