@@ -561,3 +561,15 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:74px 0 0}
 .alliance-badge .al-txt b{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:13px;color:#1b4a6b}
 .alliance-badge .al-txt small{font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:#5a6470;margin-top:3px}
 @media(max-width:560px){ .creds-badges .gfcc-badge,.creds-badges .alliance-badge{height:66px} .creds-badges .gfcc-badge img{height:48px} .alliance-badge img{height:24px} }
+
+/* ---- footer social + Google reviews ---- */
+.foot-social{margin-top:22px;display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.fsoc{width:40px;height:40px;border:1px solid var(--line-2);border-radius:var(--r);display:inline-flex;align-items:center;justify-content:center;color:var(--fog);transition:.25s var(--ease)}
+.fsoc svg{width:19px;height:19px}
+.fsoc:hover{border-color:var(--amber);color:#fff;background:rgba(79,159,214,.12)}
+.freviews{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:var(--r);padding:6px 14px;color:var(--fog);transition:.25s var(--ease)}
+.freviews:hover{border-color:var(--amber);color:#fff;background:rgba(79,159,214,.12)}
+.freviews .stars{color:#fbbc04;font-size:14px;letter-spacing:1.5px;white-space:nowrap}
+.freviews .fr-txt{display:flex;flex-direction:column;line-height:1.12}
+.freviews .fr-txt b{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:12.5px}
+.freviews .fr-txt small{font-size:10.5px;color:var(--concrete)}
