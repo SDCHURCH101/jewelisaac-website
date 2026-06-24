@@ -130,15 +130,14 @@
 
     <!-- FORM -->
     <div class="form-card reveal">
-      <!--
-        DEMO MODE: this form validates client-side and shows a success panel.
-        To receive real submissions, do ONE of the following, then remove data-demo="true":
-          • Netlify Forms: add  name="bid" data-netlify="true"  and keep the hidden form-name input below.
-          • Formspree: set  action="https://formspree.io/f/XXXXXXXX"
-          • Your CRM/endpoint: point action + method at it.
-      -->
-      <form id="bidForm" data-demo="true" action="#" method="POST" novalidate>
-        <!-- <input type="hidden" name="form-name" value="bid"> (uncomment for Netlify) -->
+      <!-- Submissions are delivered by FormSubmit (https://formsubmit.co) to estimating@jewelisaac.com.
+           Note: the first real submission triggers a one-time confirmation email to that inbox; click it once to activate. -->
+      <form id="bidForm" action="https://formsubmit.co/estimating@jewelisaac.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New bid request from jewelisaac.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.jewelisaac.com/thank-you.html">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
         <div class="form-body">
           <div class="form-row">
             <div class="field">

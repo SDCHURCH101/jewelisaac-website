@@ -259,15 +259,15 @@
 
       <!-- APPLICATION FORM -->
       <div class="form-card reveal">
-        <!--
-          DEMO MODE: this form validates client-side and shows a success panel.
-          To receive real submissions, do ONE of the following, then remove data-demo="true":
-            • Formspree: set  action="https://formspree.io/f/XXXXXXXX"  (easiest, supports file uploads on paid tiers)
-            • Netlify Forms: add  name="application" data-netlify="true"  and a hidden form-name input.
-            • Your ATS / email endpoint: point action + method at it.
-          For resume file uploads, add  enctype="multipart/form-data"  and an <input type="file" name="resume">.
-        -->
-        <form id="bidForm" data-demo="true" action="#" method="POST" novalidate>
+        <!-- Submissions are delivered by FormSubmit (https://formsubmit.co) to careers@jewelisaac.com.
+             Note: the first real submission triggers a one-time confirmation email to that inbox; click it once to activate.
+             Résumés are collected via the careers@ email link in the aside (FormSubmit free tier is text-only). -->
+        <form id="bidForm" action="https://formsubmit.co/careers@jewelisaac.com" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New career application from jewelisaac.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://www.jewelisaac.com/thank-you.html">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
           <div class="form-body">
             <div class="form-row">
               <div class="field">
