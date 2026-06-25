@@ -15,9 +15,26 @@
     im.onerror = function () { el.style.backgroundImage = FALLBACK; };
     im.src = url;
   }
-  document.querySelectorAll('[data-bg]').forEach(function (el) {
-    setBg(el, el.getAttribute('data-bg'));
-  });
+  /* Eager-load the hero (first [data-bg]) for fast LCP; lazy-load the rest
+     just before they scroll into view so off-screen photos don't block load. */
+  var bgEls = [].slice.call(document.querySelectorAll('[data-bg]'));
+  if (bgEls.length) {
+    setBg(bgEls[0], bgEls[0].getAttribute('data-bg'));
+    var rest = bgEls.slice(1);
+    if ('IntersectionObserver' in window && rest.length) {
+      var bgObs = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) {
+            setBg(e.target, e.target.getAttribute('data-bg'));
+            bgObs.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '400px 0px' });
+      rest.forEach(function (el) { bgObs.observe(el); });
+    } else {
+      rest.forEach(function (el) { setBg(el, el.getAttribute('data-bg')); });
+    }
+  }
 
   /* ---- active nav link based on current file ---- */
   (function () {
@@ -181,9 +198,29 @@
       try { document.cookie = 'googtrans=' + v + ';path=/' + (d ? ';domain=' + d : ''); } catch (e) {}
     });
   }
+  /* Google Translate is heavy, so load it lazily: only when a visitor opens the
+     language menu or already has a non-English translation active. English
+     visitors (the majority) never download it, which keeps first load fast. */
+  var gtLoaded = false;
+  function loadGT() {
+    if (gtLoaded) return;
+    if (!document.getElementById('google_translate_element')) return;
+    gtLoaded = true;
+    window.googleTranslateElementInit = function () {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ja,ko,zh-CN,zh-TW,th,fr,el,ru,vi',
+        autoDisplay: false
+      }, 'google_translate_element');
+    };
+    var s = document.createElement('script');
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.body.appendChild(s);
+  }
   function setLang(code) {
     mark(code);
     if (code === 'en') { clearCookie(); location.reload(); return; }
+    loadGT();
     setCookie('/en/' + code);
     var combo = document.querySelector('.goog-te-combo');
     if (combo) { combo.value = code; combo.dispatchEvent(new Event('change')); }
@@ -191,7 +228,8 @@
   }
 
   mark(cookieLang());
-  btn.addEventListener('click', function (e) { e.stopPropagation(); wrap.classList.toggle('open'); });
+  if (cookieLang() !== 'en') loadGT();
+  btn.addEventListener('click', function (e) { e.stopPropagation(); loadGT(); wrap.classList.toggle('open'); });
   document.addEventListener('click', function () { wrap.classList.remove('open'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') wrap.classList.remove('open'); });
   menu.addEventListener('click', function (e) {
