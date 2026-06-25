@@ -45,6 +45,15 @@
 .faq-item summary:hover{color:var(--amber)}
 .faq-a{padding:0 4px 24px;color:var(--concrete);max-width:780px}
 .faq-a p{margin:0;line-height:1.7}
+.testi-card{max-width:900px;margin:0 auto;text-align:center}
+.testi-q{font-family:'Oswald',sans-serif;font-size:84px;line-height:.5;color:var(--amber);height:42px}
+.testi-quote{font-family:'Oswald',sans-serif;font-weight:300;font-size:29px;line-height:1.42;color:var(--paper);margin:6px 0 28px}
+.testi-by b{color:#fff;font-size:16px;display:block}
+.testi-by span{color:var(--concrete);font-size:13.5px}
+.testi-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;color:var(--amber);font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+.testi-link .arr{transition:transform .25s}
+.testi-link:hover .arr{transform:translateX(5px)}
+@media(max-width:640px){.testi-quote{font-size:22px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where does Jewel Isaac work?","acceptedAnswer":{"@type":"Answer","text":"We are an Alaska general contractor headquartered in Fairbanks with an Anchorage office, and we build statewide: the Interior, Anchorage, the North Slope, and remote village sites."}},{"@type":"Question","name":"What types of construction does Jewel Isaac do?","acceptedAnswer":{"@type":"Answer","text":"We self-perform and manage commercial, government and defense, industrial, mining, and oil and gas construction. That includes design-build, facility renovations, tenant improvements, workforce housing and man camps, and site utilities."}},{"@type":"Question","name":"Is Jewel Isaac licensed, bonded, and registered for government work?","acceptedAnswer":{"@type":"Answer","text":"Yes. We hold Alaska General Contractor License #115766, are bonded and insured, and are SAM.gov registered (UEI ULLZLBKHGCB8, CAGE 7PYR4, NAICS 236220) for federal and state contracting."}},{"@type":"Question","name":"Does Jewel Isaac self-perform or subcontract?","acceptedAnswer":{"@type":"Answer","text":"We self-perform core trades with in-house crews, and we subcontract and coordinate heavy civil and specialty scopes under our management."}},{"@type":"Question","name":"How do I request a bid from Jewel Isaac?","acceptedAnswer":{"@type":"Answer","text":"Send your scope, site, and schedule through our contact page or email estimating@jewelisaac.com. You can also call (907) 415-1600. Our estimating team reviews every request and responds promptly."}},{"@type":"Question","name":"When was Jewel Isaac founded?","acceptedAnswer":{"@type":"Answer","text":"Jewel Isaac, LLC was founded in 2016 and is led by managing member Seth Church, who has spent two decades in Alaska construction."}}]}</script>
 </head>
@@ -488,6 +497,21 @@
     </div>
   </div>
 </div>
+
+<!-- TESTIMONIAL -->
+<section class="sec tight" id="testimonial" style="background:linear-gradient(180deg,#0c0d0f,#101216)">
+  <div class="wrap">
+    <div class="testi-card reveal">
+      <div class="testi-q" aria-hidden="true">&ldquo;</div>
+      <blockquote class="testi-quote">Jewel Isaac's work performance is among the best. They are fast and efficient and aren't afraid to work hard. They rarely submit change orders.</blockquote>
+      <div class="testi-by">
+        <b>Chris Newman</b>
+        <span>President, Curt Faus Construction · 17-year prime-contractor partner</span>
+      </div>
+      <a class="testi-link" href="capabilities.html#references">Read client references <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
 
 <!-- FAQ -->
 <section class="sec faq-sec" id="faq">
