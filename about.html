@@ -180,10 +180,11 @@
     </div>
     <div class="team-grid">
       <div class="member reveal">
-        <div class="photo"><img src="assets/img/team/seth.webp" alt="Seth Church, Managing Member" loading="lazy" /></div>
+        <div class="photo"><a class="bio-photo" href="assets/docs/bios/seth-church.pdf" target="_blank" rel="noopener" aria-label="Read Seth Church's bio"><img src="assets/img/team/seth.webp" alt="Seth Church, Managing Member" loading="lazy" /></a></div>
         <div class="info">
           <h3>Seth Church</h3>
           <div class="role">Managing Member</div>
+          <a class="bio-link" href="assets/docs/bios/seth-church.pdf" target="_blank" rel="noopener">View bio →</a>
           <div class="ct">
             <a href="mailto:seth@jewelisaac.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> seth@jewelisaac.com</a>
             <a href="tel:7015007188"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> (701) 500-7188</a>
@@ -191,10 +192,11 @@
         </div>
       </div>
       <div class="member reveal d1">
-        <div class="photo"><img src="assets/img/team/dave.webp" alt="Dave Long, General Manager" loading="lazy" /></div>
+        <div class="photo"><a class="bio-photo" href="assets/docs/bios/dave-long.pdf" target="_blank" rel="noopener" aria-label="Read Dave Long's bio"><img src="assets/img/team/dave.webp" alt="Dave Long, General Manager" loading="lazy" /></a></div>
         <div class="info">
           <h3>Dave Long</h3>
           <div class="role">General Manager</div>
+          <a class="bio-link" href="assets/docs/bios/dave-long.pdf" target="_blank" rel="noopener">View bio →</a>
           <div class="ct">
             <a href="mailto:dave@jewelisaac.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> dave@jewelisaac.com</a>
             <a href="tel:7016098472"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> (701) 609-8472</a>
@@ -213,10 +215,11 @@
         </div>
       </div>
       <div class="member reveal d1">
-        <div class="photo"><img src="assets/img/team/maiia.webp" alt="Maiia Makarovskaia, Chief Financial Officer" loading="lazy" /></div>
+        <div class="photo"><a class="bio-photo" href="assets/docs/bios/maiia-makarovskaia.pdf" target="_blank" rel="noopener" aria-label="Read Maiia Makarovskaia's bio"><img src="assets/img/team/maiia.webp" alt="Maiia Makarovskaia, Chief Financial Officer" loading="lazy" /></a></div>
         <div class="info">
           <h3>Maiia Makarovskaia</h3>
           <div class="role">Chief Financial Officer</div>
+          <a class="bio-link" href="assets/docs/bios/maiia-makarovskaia.pdf" target="_blank" rel="noopener">View bio →</a>
         </div>
       </div>
       <div class="member reveal d2">
@@ -232,16 +235,23 @@
     .ft{border:1px solid var(--line);border-radius:var(--r);background:#101216;padding:18px 20px;text-align:center}
     .ft b{display:block;color:#fff;font-size:15px;font-family:'Oswald',sans-serif;letter-spacing:.02em}
     .ft span{display:block;color:var(--concrete);font-size:11.5px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.05em;margin-top:5px}
+    a.bio-photo{display:block;line-height:0;position:relative;cursor:pointer}
+    a.bio-photo::after{content:"View bio";position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:14px;background:linear-gradient(transparent 55%,rgba(11,18,30,.86));color:#fff;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:11px;line-height:1;opacity:0;transition:opacity .25s var(--ease)}
+    a.bio-photo:hover::after{opacity:1}
+    .bio-link{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--amber)}
+    a.ft.bio{cursor:pointer;text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+    a.ft.bio:hover{border-color:rgba(79,159,214,.5);transform:translateY(-2px)}
+    .ft .bio-cue{color:var(--amber);font-size:9.5px;margin-top:9px;letter-spacing:.1em}
     </style>
     <div class="field-team reveal" style="margin-top:46px;border-top:1px solid var(--line);padding-top:38px">
       <h3 style="text-align:center;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:15px;color:var(--amber);margin:0 0 26px">Project &amp; Field Team</h3>
       <div class="ft-grid">
         <div class="ft"><b>Corey Lumley</b><span>Project Manager</span></div>
-        <div class="ft"><b>Chris Barton</b><span>Senior Superintendent</span></div>
+        <a class="ft bio" href="assets/docs/bios/chris-barton.pdf" target="_blank" rel="noopener"><b>Chris Barton</b><span>Senior Superintendent</span><span class="bio-cue">View bio →</span></a>
         <div class="ft"><b>Steve Dickman</b><span>Senior Superintendent</span></div>
         <div class="ft"><b>Matt Glaze</b><span>Superintendent</span></div>
         <div class="ft"><b>Chris Farr</b><span>Superintendent</span></div>
-        <div class="ft"><b>John Pribyl</b><span>General Foreman</span></div>
+        <a class="ft bio" href="assets/docs/bios/john-pribyl.pdf" target="_blank" rel="noopener"><b>John Pribyl</b><span>General Foreman</span><span class="bio-cue">View bio →</span></a>
         <div class="ft"><b>Siena Rosetti</b><span>Accounts Receivable / Payable</span></div>
       </div>
     </div>
