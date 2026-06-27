@@ -32,6 +32,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["GeneralContractor","LocalBusiness"],"@id":"https://www.jewelisaac.com/#organization","name":"Jewel Isaac, LLC","alternateName":"Jewel Isaac General Contractor","url":"https://www.jewelisaac.com/","logo":"https://www.jewelisaac.com/assets/img/favicon-512.png","image":"https://www.jewelisaac.com/assets/img/og-image.jpg","description":"Alaska general contractor self-performing commercial, government, industrial, mining, and oil & gas construction across the state, headquartered in Fairbanks with an Anchorage office.","telephone":"+1-907-415-1600","email":"estimating@jewelisaac.com","priceRange":"$$$","foundingDate":"2016","founder":{"@type":"Person","name":"Seth Church"},"address":{"@type":"PostalAddress","streetAddress":"300 Barnette St, Suite 202","addressLocality":"Fairbanks","addressRegion":"AK","postalCode":"99701","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":64.8401,"longitude":-147.72},"areaServed":[{"@type":"State","name":"Alaska"},{"@type":"City","name":"Fairbanks"},{"@type":"City","name":"Anchorage"},{"@type":"Place","name":"North Slope, Alaska"}],"knowsAbout":["Commercial construction","Government and defense construction","Industrial construction","Mining facility construction","Oil and gas construction","Design-build","Self-perform general contracting","Workforce housing and man camps","Arctic and cold-climate construction","Tenant improvement","Hydroexcavation"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Construction Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Commercial Construction","areaServed":"Alaska"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Government & Defense Construction","areaServed":"Alaska"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Industrial Construction","areaServed":"Alaska"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Mining Construction","areaServed":"Alaska"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Oil & Gas Construction","areaServed":"Alaska"}}]},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}],"identifier":[{"@type":"PropertyValue","propertyID":"UEI","value":"ULLZLBKHGCB8"},{"@type":"PropertyValue","propertyID":"CAGE","value":"7PYR4"},{"@type":"PropertyValue","propertyID":"NAICS","value":"236220"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.jewelisaac.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://www.jewelisaac.com/contact.html"}]}</script>
 <link rel="preload" as="image" href="assets/img/fleet-building.jpg" fetchpriority="high">
+<style>
+.field input[type=file]{color:var(--paper);font-size:13px;padding:10px 12px;cursor:pointer}
+.field input[type=file]::file-selector-button{background:#1b1f26;color:#fff;border:1px solid var(--line-2);border-radius:6px;padding:7px 13px;margin-right:13px;cursor:pointer;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:11px;transition:background .15s}
+.field input[type=file]::file-selector-button:hover{background:var(--amber-2);border-color:var(--amber-2)}
+</style>
 </head>
 <body data-page="contact">
 
@@ -133,7 +138,7 @@
     <div class="form-card reveal">
       <!-- Submissions are delivered by FormSubmit (https://formsubmit.co) to estimating@jewelisaac.com.
            Note: the first real submission triggers a one-time confirmation email to that inbox; click it once to activate. -->
-      <form id="bidForm" action="https://formsubmit.co/estimating@jewelisaac.com" method="POST" novalidate>
+      <form id="bidForm" action="https://formsubmit.co/estimating@jewelisaac.com" method="POST" enctype="multipart/form-data" novalidate>
         <input type="hidden" name="_subject" value="New bid request from jewelisaac.com">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
@@ -197,10 +202,30 @@
               <input name="timeline" placeholder="e.g. Q3 2026 / ASAP">
             </div>
           </div>
+          <div class="form-row">
+            <div class="field">
+              <label>Delivery method</label>
+              <select name="delivery_method">
+                <option>Not sure / open</option>
+                <option>Design-build</option>
+                <option>CM at Risk (CMAR)</option>
+                <option>Hard-bid / Design-bid-build</option>
+                <option>IDIQ / Task order / JOC</option>
+                <option>Negotiated / Time &amp; materials</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Drawings or RFP <span style="color:var(--concrete);font-weight:400;text-transform:none;letter-spacing:0">optional · max 10MB</span></label>
+              <input type="file" name="attachment" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.dwg,.zip" multiple>
+            </div>
+          </div>
           <div class="field full">
             <label>Project details <span class="req">*</span></label>
-            <textarea name="details" required placeholder="Scope, site conditions, schedule, delivery method, and anything else we should know…"></textarea>
+            <textarea name="details" required placeholder="Scope, site conditions, schedule, and anything else we should know…"></textarea>
             <span class="err">Tell us a little about the project.</span>
+          </div>
+          <div class="field full">
+            <p style="color:var(--concrete);font-size:13.5px;line-height:1.6;margin:0"><strong style="color:var(--paper);font-weight:600">What happens next:</strong> we review every request, follow up to confirm scope and answer questions, then provide your bid or proposal. We respond promptly.</p>
           </div>
           <div class="form-foot">
             <button type="submit" class="btn btn-amber btn-lg">Submit Bid Request <span class="arr">→</span></button>
