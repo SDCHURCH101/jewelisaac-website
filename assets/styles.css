@@ -104,9 +104,9 @@ header.shrink .brand .mark img{height:27px}
 .lang-btn .chev{width:11px;height:11px;transition:transform .25s var(--ease)}
 .lang.open .lang-btn{border-color:var(--amber);color:#fff}
 .lang.open .lang-btn .chev{transform:rotate(180deg)}
-.lang-menu{position:absolute;top:calc(100% + 12px);right:0;z-index:130;background:#15181d;border:1px solid var(--line-2);border-radius:var(--r);min-width:236px;padding:7px;box-shadow:0 24px 60px -14px rgba(0,0,0,.75);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s var(--ease)}
+.lang-menu{position:absolute;top:calc(100% + 12px);right:0;z-index:130;background:#15181d;border:1px solid var(--line-2);border-radius:var(--r);min-width:248px;max-height:min(72vh,520px);overflow-y:auto;padding:7px;box-shadow:0 24px 60px -14px rgba(0,0,0,.75);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s var(--ease)}
 .lang.open .lang-menu{opacity:1;visibility:visible;transform:none}
-.lang-menu button{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:transparent;border:0;cursor:pointer;padding:11px 13px;border-radius:3px;text-align:left;transition:.15s}
+.lang-menu button{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:transparent;border:0;cursor:pointer;padding:8px 13px;border-radius:3px;text-align:left;transition:.15s}
 .lang-menu button:hover{background:var(--panel-2)}
 .lang-menu button.on{background:rgba(79,159,214,.12)}
 .lang-menu .ln-native{font-size:15px;color:#fff;font-weight:500}
