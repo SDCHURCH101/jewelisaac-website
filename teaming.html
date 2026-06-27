@@ -36,7 +36,8 @@
 
 <style>
 .bring-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:44px}
-.bring{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);padding:28px 26px}
+.bring{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);padding:28px 26px;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.bring:hover{border-color:rgba(79,159,214,.4);transform:translateY(-3px)}
 .bring .ic{width:42px;height:42px;border-radius:10px;background:rgba(79,159,214,.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
 .bring .ic svg{width:22px;height:22px;stroke:var(--amber);fill:none;stroke-width:2}
 .bring h3{font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:.01em;margin:0 0 8px;color:#fff}
@@ -49,10 +50,13 @@
 .mgn-facts .f b{display:block;font-family:'Oswald',sans-serif;font-size:20px;color:#fff}
 .mgn-facts .f span{font-size:12.5px;color:var(--concrete);text-transform:uppercase;letter-spacing:.06em}
 .dl-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px}
-.ways{list-style:none;margin:32px 0 0;padding:0;max-width:800px;display:grid;gap:15px}
-.ways li{display:flex;gap:13px;align-items:flex-start;font-size:15px;color:var(--fog);line-height:1.55}
-.ways li svg{width:18px;height:18px;color:var(--amber);flex:0 0 auto;margin-top:3px}
-.ways li strong{color:#fff}
+.ways{margin:36px 0 0;display:grid;gap:14px;max-width:860px}
+.way{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);padding:19px 24px;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.way:hover{border-color:rgba(79,159,214,.4);transform:translateY(-2px)}
+.chk{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:rgba(79,159,214,.14);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.chk svg{width:16px;height:16px;color:var(--amber)}
+.way b{display:block;font-family:'Oswald',sans-serif;font-size:16.5px;letter-spacing:.01em;color:#fff;margin-bottom:4px}
+.way p{margin:0;font-size:13.8px;color:var(--concrete);line-height:1.5}
 @media(max-width:640px){.mgn-box{padding:26px 20px}}
 </style>
 </head>
@@ -165,32 +169,32 @@
     </div>
     <div class="bring-grid">
       <div class="bring reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
         <h3>Local self-perform crews</h3>
         <p>About 25 Alaska-based staff who self-perform carpentry, framing, drywall and finishes, roofing, siding, and casework. We hold the critical path in-house instead of stacking subs, which protects your schedule and your margin.</p>
       </div>
       <div class="bring reveal d1">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h13l5 5v5h-3"/><circle cx="7.5" cy="17" r="2"/><circle cx="17.5" cy="17" r="2"/><path d="M9.5 17H15"/><path d="M3 7v10h2"/></svg></div>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 7h13l5 5v5h-3"/><circle cx="7.5" cy="17" r="2"/><circle cx="17.5" cy="17" r="2"/><path d="M9.5 17H15"/><path d="M3 7v10h2"/></svg></div>
         <h3>Remote &amp; Arctic logistics</h3>
         <p>We plan and execute around barge windows, ice roads, and air freight, and we mobilize crews and materials to the Interior, the North Slope, and off-road village sites where most contractors will not go.</p>
       </div>
       <div class="bring reveal d2">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>SAM &amp; federal registration</h3>
         <p>SAM.gov registered and ready to be added to your team: UEI ULLZLBKHGCB8, CAGE 7PYR4, Alaska General Contractor License #115766, and primary NAICS 236220. We know the documentation discipline agencies expect.</p>
       </div>
       <div class="bring reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 7h6m-6 4h6m-6 4h4M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/></svg></div>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M9 7h6m-6 4h6m-6 4h4M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/></svg></div>
         <h3>Minto Global North 8(a) teaming</h3>
         <p>We team with Minto Global North, an SBA-approved 8(a) Alaska Native Corporation. That opens a sole-source, direct-award path for federal agencies with no competitive cap and an award that cannot be protested.</p>
       </div>
       <div class="bring reveal d1">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
         <h3>Safety documentation</h3>
         <p>An OSHA-aligned program with daily job-hazard analysis, toolbox training, stop-work authority for every worker, and incident review on every event. Safety records and program documents are available on request for prequalification.</p>
       </div>
       <div class="bring reveal d2">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
         <h3>Fast, responsive estimating</h3>
         <p>Send the scope, site, and schedule and our estimating team responds promptly with budgets, scopes, and teaming letters, so you can hit your proposal deadline with a partner already locked in.</p>
       </div>
@@ -246,13 +250,13 @@
       <span class="eyebrow">Ways to team with us</span>
       <h2>However your bid is structured.</h2>
     </div>
-    <ul class="ways reveal d1">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg> <strong>Prime contractor</strong> with self-performed crews and managed specialty subs</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg> <strong>Subcontractor</strong> to your prime, with documented federal and commercial past performance</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg> <strong>8(a) sole-source teaming</strong> through Minto Global North for direct federal awards</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg> <strong>IDIQ &amp; task-order</strong> support for base, agency, and facilities contracts</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg> <strong>Teaming agreements &amp; letters of intent</strong> drafted and returned on your proposal timeline</li>
-    </ul>
+    <div class="ways reveal d1">
+      <div class="way"><span class="chk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span><div><b>Prime contractor</b><p>Self-performed crews with managed specialty subcontractors.</p></div></div>
+      <div class="way"><span class="chk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span><div><b>Subcontractor</b><p>To your prime, with documented federal and commercial past performance.</p></div></div>
+      <div class="way"><span class="chk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span><div><b>8(a) sole-source teaming</b><p>Through Minto Global North for direct federal awards.</p></div></div>
+      <div class="way"><span class="chk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span><div><b>IDIQ &amp; task-order support</b><p>For base, agency, and facilities contracts.</p></div></div>
+      <div class="way"><span class="chk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span><div><b>Teaming agreements &amp; letters of intent</b><p>Drafted and returned on your proposal timeline.</p></div></div>
+    </div>
   </div>
 </section>
 
