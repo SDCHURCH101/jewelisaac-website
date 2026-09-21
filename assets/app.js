@@ -280,6 +280,13 @@
   mark(cookieLang());
   if (cookieLang() !== 'en') { loadGT(); applyCombo(cookieLang()); }
 
+  /* The mobile menu's links stay hidden until it opens, so Google Translate
+     cannot translate them up front. Re-run translation when the menu opens. */
+  var burgerBtn = document.getElementById('burger');
+  if (burgerBtn) burgerBtn.addEventListener('click', function () {
+    if (cookieLang() !== 'en') setTimeout(function () { applyCombo(cookieLang()); }, 80);
+  });
+
   if (btn && wrap) {
     btn.addEventListener('click', function (e) { e.stopPropagation(); loadGT(); wrap.classList.toggle('open'); });
     document.addEventListener('click', function () { wrap.classList.remove('open'); });
