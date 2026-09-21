@@ -155,7 +155,7 @@ header.shrink .brand .wordmark{height:17px}
 .burger span{width:26px;height:2px;background:#fff;transition:.3s}
 
 /* Mobile menu */
-.mobile{position:fixed;inset:0;z-index:120;background:rgba(8,9,11,.98);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:30px 28px;transform:translateX(100%);transition:transform .4s var(--ease);visibility:hidden}
+.mobile{position:fixed;inset:0;z-index:120;background:rgba(8,9,11,.98);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:30px 28px;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(100%);transition:transform .4s var(--ease);visibility:hidden}
 .mobile.open{transform:none;visibility:visible}
 .mobile .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:50px}
 .mobile .close{background:none;border:0;color:#fff;font-size:34px;cursor:pointer;line-height:1}
@@ -163,6 +163,13 @@ header.shrink .brand .wordmark{height:17px}
 .mobile a:active{color:var(--amber)}
 .mobile .btn{margin-top:30px;justify-content:center;border-bottom:0}
 .mobile a.btn.btn-amber{color:#fff}
+/* mobile language picker (injected into #mobile by app.js) */
+.mlang{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.mlang-label{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--amber);margin-bottom:12px}
+.mlang-selwrap{position:relative}
+.mlang-select{width:100%;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#15181d;color:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:14px 42px 14px 15px;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.2;cursor:pointer}
+.mlang-select:focus{outline:none;border-color:var(--amber)}
+.mlang-selwrap::after{content:"";position:absolute;right:17px;top:50%;width:9px;height:9px;border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:translateY(-72%) rotate(45deg);pointer-events:none}
 
 /* Hero (home) */
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:#000 linear-gradient(120deg,#0c0d0f 0%,#16181d 55%,#0c0d0f 100%)}

@@ -158,27 +158,42 @@
 
 /* ============================================================
    Language switcher (custom UI over Google Translate)
-   Covers the languages of the Alaska LNG project partners.
+   The set of languages is read from the #langMenu markup, so the
+   options offered and the set Google Translate is configured for can
+   never drift apart. Works from the desktop dropdown AND from a native
+   picker injected into the mobile menu, so it is reachable on phones.
    ============================================================ */
 (function () {
   'use strict';
-  var SHORT = { en:'EN', ja:'JA', ko:'KO', 'zh-TW':'TW', 'zh-CN':'CN', th:'TH', fr:'FR', el:'EL', ru:'RU', vi:'VI' };
-  var wrap = document.getElementById('lang');
-  if (!wrap) return;
-  var btn = document.getElementById('langBtn'),
-      menu = document.getElementById('langMenu'),
-      cur = document.getElementById('langCur');
+  var menu = document.getElementById('langMenu');
+  if (!menu) return;
+  var wrap = document.getElementById('lang'),
+      btn  = document.getElementById('langBtn'),
+      cur  = document.getElementById('langCur');
+
+  /* Every language the menu offers, in menu order. */
+  var CODES = [].map.call(menu.querySelectorAll('button[data-lang]'),
+                          function (b) { return b.getAttribute('data-lang'); });
+  var CUSTOM = { en:'EN', 'zh-CN':'CN', 'zh-TW':'TW', iw:'HE', ja:'JA', ko:'KO', el:'EL', uk:'UK' };
+  function shortOf(c) { return CUSTOM[c] || c.slice(0, 2).toUpperCase(); }
+  function nativeOf(c) {
+    var s = menu.querySelector('button[data-lang="' + c + '"] .ln-native');
+    return (s && s.textContent) ? s.textContent : c;
+  }
 
   function cookieLang() {
     var m = document.cookie.match(/googtrans=\/[A-Za-z-]+\/([A-Za-z-]+)/);
-    return (m && SHORT[m[1]]) ? m[1] : 'en';
+    return (m && CODES.indexOf(m[1]) > -1) ? m[1] : 'en';
   }
   function mark(code) {
-    if (cur) cur.textContent = SHORT[code] || 'EN';
-    if (menu) menu.querySelectorAll('button').forEach(function (b) {
+    if (cur) cur.textContent = shortOf(code);
+    document.querySelectorAll('button[data-lang]').forEach(function (b) {
       b.classList.toggle('on', b.getAttribute('data-lang') === code);
     });
+    var sel = document.getElementById('mlangSel');
+    if (sel) sel.value = code;
   }
+
   /* all domain scopes Google Translate may store googtrans on:
      host-only, the host, .host, and the registrable domain + .registrable
      (e.g. jewelisaac.com / .jewelisaac.com) so reverting to English works. */
@@ -209,7 +224,7 @@
     window.googleTranslateElementInit = function () {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,ja,ko,zh-CN,zh-TW,th,fr,el,ru,vi',
+        includedLanguages: CODES.join(','),
         autoDisplay: false
       }, 'google_translate_element');
     };
@@ -217,26 +232,66 @@
     s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     document.body.appendChild(s);
   }
+  /* Google Translate does NOT reliably auto-translate from the googtrans
+     cookie on load, so once its widget is ready we drive its hidden <select>
+     (.goog-te-combo) directly. Poll until the combo exists, then fire it. */
+  function applyCombo(code, tries) {
+    tries = tries || 0;
+    var combo = document.querySelector('.goog-te-combo');
+    if (combo) {
+      if (combo.value !== code) { combo.value = code; }
+      combo.dispatchEvent(new Event('change'));
+      return;
+    }
+    if (tries < 60) setTimeout(function () { applyCombo(code, tries + 1); }, 150);
+  }
   function setLang(code) {
+    if (CODES.indexOf(code) < 0) return;
     mark(code);
     if (code === 'en') { clearCookie(); location.reload(); return; }
+    setCookie('/en/' + code);   /* persists the choice across pages */
     loadGT();
-    setCookie('/en/' + code);
-    var combo = document.querySelector('.goog-te-combo');
-    if (combo) { combo.value = code; combo.dispatchEvent(new Event('change')); }
-    else { location.reload(); }
+    applyCombo(code);           /* translates the current page in place */
+  }
+
+  /* Phones hide the desktop dropdown, so inject a native <select> language
+     picker into the mobile menu. Built from the same CODES list. */
+  var mob = document.getElementById('mobile');
+  if (mob && !document.getElementById('mlangSel')) {
+    var sec = document.createElement('div');
+    sec.className = 'mlang notranslate';
+    sec.setAttribute('translate', 'no');
+    sec.innerHTML = '<span class="mlang-label">Language</span>';
+    var sw = document.createElement('div'); sw.className = 'mlang-selwrap';
+    var sel = document.createElement('select');
+    sel.id = 'mlangSel'; sel.className = 'mlang-select';
+    sel.setAttribute('aria-label', 'Select language');
+    CODES.forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c; o.textContent = nativeOf(c);
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function () { setLang(sel.value); });
+    sw.appendChild(sel); sec.appendChild(sw);
+    var anchor = mob.querySelector('.btn');
+    if (anchor) mob.insertBefore(sec, anchor); else mob.appendChild(sec);
   }
 
   mark(cookieLang());
-  if (cookieLang() !== 'en') loadGT();
-  btn.addEventListener('click', function (e) { e.stopPropagation(); loadGT(); wrap.classList.toggle('open'); });
-  document.addEventListener('click', function () { wrap.classList.remove('open'); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') wrap.classList.remove('open'); });
-  menu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var b = e.target.closest('button'); if (!b) return;
+  if (cookieLang() !== 'en') { loadGT(); applyCombo(cookieLang()); }
+
+  if (btn && wrap) {
+    btn.addEventListener('click', function (e) { e.stopPropagation(); loadGT(); wrap.classList.toggle('open'); });
+    document.addEventListener('click', function () { wrap.classList.remove('open'); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') wrap.classList.remove('open'); });
+  }
+  /* one delegated handler serves every language button (desktop dropdown) */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-lang]');
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    if (wrap) wrap.classList.remove('open');
     setLang(b.getAttribute('data-lang'));
-    wrap.classList.remove('open');
   });
 })();
 
